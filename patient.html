@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <!DOCTYPE html>
 <html lang="zh-Hant">
 <head>
@@ -36,4 +37,44 @@
 
 <script type="module" src="patient.js"></script>
 </body>
+=======
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>我的衛教卡</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;600;700&family=Noto+Serif+TC:wght@600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/index.css">
+</head>
+<body>
+
+<div id="loginView" class="container login-box">
+  <h1 style="text-align:center;">查看我的衛教卡</h1>
+  <div class="card">
+    <div class="field">
+      <label for="nameInput">姓名</label>
+      <input type="text" id="nameInput" placeholder="請輸入姓名(需與治療師登記的姓名一致)">
+    </div>
+    <div class="field">
+      <label for="codeInput">查詢碼(8位數字,治療師提供)</label>
+      <input type="text" inputmode="numeric" id="codeInput" placeholder="12345678" maxlength="8">
+    </div>
+    <button class="btn btn-primary" style="width:100%;" id="queryBtn">查詢</button>
+    <p class="msg error" id="queryMsg"></p>
+  </div>
+  <p class="link-switch"><a href="index.html">← 回首頁</a></p>
+</div>
+
+<div id="resultView" class="container" style="display:none; max-width:520px;">
+  <div id="cardContainer"></div>
+  <p style="text-align:center; margin-top:24px;">
+    <button class="btn btn-ghost" id="backBtn">重新查詢</button>
+  </p>
+</div>
+
+<script type="module" src="js/patient.js"></script>
+</body>
+>>>>>>> 75a8e57d78505e275a4765914571b045a4e6e167
 </html>

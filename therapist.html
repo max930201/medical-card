@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <!DOCTYPE html>
 <html lang="zh-Hant">
 <head>
@@ -130,4 +131,138 @@
 
 <script type="module" src="therapist.js"></script>
 </body>
+=======
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>治療師後台 | 衛教卡管理系統</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;600;700&family=Noto+Serif+TC:wght@600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/index.css">
+</head>
+<body>
+
+<!-- ===== 登入畫面 ===== -->
+<div id="loginView" class="container login-box">
+  <h1 style="text-align:center;">治療師登入</h1>
+  <div class="card">
+    <div class="field">
+      <label for="loginEmail">帳號 Email</label>
+      <input type="email" id="loginEmail" autocomplete="username">
+    </div>
+    <div class="field">
+      <label for="loginPassword">密碼</label>
+      <input type="password" id="loginPassword" autocomplete="current-password">
+    </div>
+    <button class="btn btn-primary" style="width:100%;" id="loginBtn">登入</button>
+    <p class="msg error" id="loginMsg"></p>
+  </div>
+  <p class="link-switch"><a href="index.html">← 回首頁</a></p>
+</div>
+
+<!-- ===== 登入後主畫面 ===== -->
+<div id="appView" style="display:none;">
+  <div class="topbar">
+    <span class="brand">衛教卡管理系統</span>
+    <button id="logoutBtn">登出</button>
+  </div>
+
+  <div class="container">
+
+    <!-- 病人列表 -->
+    <div id="listView">
+      <h2>病人列表</h2>
+      <div class="card">
+        <div id="patientList"><div class="empty-state">載入中…</div></div>
+      </div>
+      <button class="btn btn-accent" id="showAddPatientBtn">+ 新增病人</button>
+
+      <!-- 新增病人表單 -->
+      <div class="card" id="addPatientForm" style="display:none; margin-top:16px;">
+        <h3>新增病人</h3>
+        <div class="field">
+          <label for="newName">姓名</label>
+          <input type="text" id="newName">
+        </div>
+        <div class="field">
+          <label for="newPhone">手機號碼(選填)</label>
+          <input type="tel" id="newPhone" placeholder="09xxxxxxxx">
+        </div>
+        <div class="field">
+          <label for="newNote">備註(選填)</label>
+          <input type="text" id="newNote" placeholder="例如:居家復健 / 治療所">
+        </div>
+        <p style="color:var(--color-text-muted); font-size:0.8rem;">
+          病人查詢衛教卡時是用「姓名 + 查詢碼」,請確保這裡填寫的姓名跟病人查詢時輸入的一致。
+        </p>
+        <button class="btn btn-primary" id="savePatientBtn">建立病人</button>
+        <button class="btn btn-ghost" id="cancelAddBtn">取消</button>
+        <p class="msg error" id="addPatientMsg"></p>
+      </div>
+    </div>
+
+    <!-- 病人詳細 / 建立衛教卡 -->
+    <div id="detailView" style="display:none;">
+      <button class="btn btn-ghost" id="backToListBtn" style="margin-bottom:16px;">← 回病人列表</button>
+
+      <div class="card">
+        <div id="detailViewMode">
+          <h2 id="detailName"></h2>
+          <p style="color:var(--color-text-muted);" id="detailPhone"></p>
+          <p style="margin-top:10px;">病人查詢碼:
+            <span class="tag-code" id="detailCode"></span>
+          </p>
+          <p style="color:var(--color-text-muted); font-size:0.85rem; margin-top:8px;">
+            請告知病人:到首頁點選「病人查詢」,輸入姓名與上方查詢碼即可查看衛教卡。
+          </p>
+          <button class="btn btn-ghost" id="editPatientBtn" style="margin-top:12px;">編輯姓名/手機號碼</button>
+          <button class="btn btn-danger-ghost" id="deletePatientBtn" style="margin-top:12px;">刪除此病人</button>
+        </div>
+        <!-- 編輯病人資料表單,預設隱藏,點「編輯」後顯示 -->
+        <div id="editPatientForm" style="display:none;">
+          <div class="field">
+            <label for="editName">姓名</label>
+            <input type="text" id="editName">
+          </div>
+          <div class="field">
+            <label for="editPhone">手機號碼(選填)</label>
+            <input type="tel" id="editPhone" placeholder="09xxxxxxxx">
+          </div>
+          <p style="color:var(--color-text-muted); font-size:0.8rem;">
+            若修改姓名,病人查詢碼會保留不變,但病人需改用「新的姓名」查詢,請務必同步告知病人。
+            手機號碼為選填欄位,僅供治療師內部聯絡使用,修改手機號碼不影響病人查詢。
+          </p>
+          <button class="btn btn-primary" id="saveEditPatientBtn">儲存變更</button>
+          <button class="btn btn-ghost" id="cancelEditPatientBtn">取消</button>
+          <p class="msg error" id="editPatientMsg"></p>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3>建立 / 更新衛教卡</h3>
+        <p style="color:var(--color-text-muted); font-size:0.85rem;">
+          病人只會看到「最新一次」建立的衛教卡內容。
+        </p>
+        <div id="itemsContainer"></div>
+        <button class="btn btn-ghost" id="addItemBtn" style="margin-top:6px;">+ 新增症狀/建議</button>
+        <div style="margin-top:16px;">
+          <button class="btn btn-primary" id="saveCardBtn">儲存並更新給病人</button>
+        </div>
+        <p class="msg" id="cardMsg"></p>
+      </div>
+
+      <div class="card">
+        <h3>歷史紀錄</h3>
+        <div id="cardHistory"><div class="empty-state">尚無紀錄</div></div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<script type="module" src="js/therapist.js"></script>
+</body>
+>>>>>>> 75a8e57d78505e275a4765914571b045a4e6e167
 </html>
