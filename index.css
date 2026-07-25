@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 /* ============================================
    設計 tokens
    定位:工具型網頁(治療師後台 + 病人查詢)
@@ -234,7 +234,7 @@ a { color: var(--color-primary); }
 @media (max-width: 480px) {
   .container { padding: 20px 14px 60px; }
   .med-card-head .patient-name { font-size: 1.2rem; }
-=======
+
 /* ============================================
    設計 tokens
    定位:工具型網頁(治療師後台 + 病人查詢)
