@@ -1,0 +1,244 @@
+/* ============================================
+   設計 tokens
+   定位:工具型網頁(治療師後台 + 病人查詢)
+   配色:沉穩醫療感,青綠為主色,暖橙為強調色(建議/行動)
+   ============================================ */
+:root {
+  --color-primary: #2b6e6e;
+  --color-primary-dark: #1e4f4f;
+  --color-primary-light: #dcedeb;
+  --color-accent: #e08a3e;
+  --color-bg: #f7f9f8;
+  --color-surface: #ffffff;
+  --color-text: #1c2b2a;
+  --color-text-muted: #5c6e6c;
+  --color-border: #d7e3e1;
+  --color-danger: #c4574a;
+
+  --font-display: "Noto Serif TC", "PMingLiU", serif;
+  --font-body: "Noto Sans TC", "PingFang TC", "Microsoft JhengHei", sans-serif;
+
+  --radius: 10px;
+  --shadow-sm: 0 1px 3px rgba(28, 43, 42, 0.08);
+  --shadow-md: 0 4px 16px rgba(28, 43, 42, 0.10);
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: var(--font-body);
+  background: var(--color-bg);
+  color: var(--color-text);
+  line-height: 1.6;
+}
+
+h1, h2, h3 {
+  font-family: var(--font-display);
+  font-weight: 600;
+  margin: 0 0 0.5em;
+  color: var(--color-primary-dark);
+}
+
+a { color: var(--color-primary); }
+
+.container {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 32px 20px 80px;
+}
+
+.topbar {
+  background: var(--color-primary-dark);
+  color: #fff;
+  padding: 16px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.topbar .brand {
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+  letter-spacing: 0.02em;
+}
+.topbar button {
+  background: transparent;
+  border: 1px solid rgba(255,255,255,0.4);
+  color: #fff;
+  padding: 6px 14px;
+  border-radius: 999px;
+  font-size: 0.85rem;
+  cursor: pointer;
+}
+.topbar button:hover { background: rgba(255,255,255,0.12); }
+
+.card {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  padding: 24px;
+  box-shadow: var(--shadow-sm);
+  margin-bottom: 20px;
+}
+
+.field { margin-bottom: 16px; }
+.field label {
+  display: block;
+  font-size: 0.9rem;
+  color: var(--color-text-muted);
+  margin-bottom: 6px;
+}
+.field input, .field textarea {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
+  font-size: 1rem;
+  font-family: var(--font-body);
+  background: #fff;
+  color: var(--color-text);
+}
+.field input:focus, .field textarea:focus {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 1px;
+  border-color: var(--color-primary);
+}
+.field textarea { resize: vertical; min-height: 64px; }
+
+.btn {
+  display: inline-block;
+  padding: 10px 20px;
+  border-radius: 999px;
+  border: none;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  font-family: var(--font-body);
+}
+.btn-primary { background: var(--color-primary); color: #fff; }
+.btn-primary:hover { background: var(--color-primary-dark); }
+.btn-accent { background: var(--color-accent); color: #fff; }
+.btn-accent:hover { background: #c9752b; }
+.btn-ghost { background: transparent; color: var(--color-primary); border: 1px solid var(--color-primary); }
+.btn-ghost:hover { background: var(--color-primary-light); }
+.btn-danger-ghost { background: transparent; color: var(--color-danger); border: 1px solid var(--color-danger); font-size: 0.8rem; padding: 6px 14px; }
+.btn-danger-ghost:hover { background: #fbeceb; }
+.btn:disabled { opacity: 0.5; cursor: not-allowed; }
+
+.patient-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 14px 4px;
+  border-bottom: 1px solid var(--color-border);
+  cursor: pointer;
+}
+.patient-row:last-child { border-bottom: none; }
+.patient-row:hover { background: var(--color-primary-light); }
+.patient-row .name { font-weight: 600; }
+.patient-row .phone { color: var(--color-text-muted); font-size: 0.85rem; }
+
+.tag-code {
+  display: inline-block;
+  background: var(--color-primary-light);
+  color: var(--color-primary-dark);
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  padding: 4px 10px;
+  border-radius: 6px;
+  font-size: 0.95rem;
+}
+
+.item-row {
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+  margin-bottom: 10px;
+  padding: 12px;
+  background: var(--color-primary-light);
+  border-radius: 8px;
+}
+.item-row .item-fields { flex: 1; display: flex; flex-direction: column; gap: 6px; }
+.item-row input { border: 1px solid var(--color-border); border-radius: 6px; padding: 8px 10px; font-size: 0.95rem; }
+.item-row .remove-item {
+  background: none; border: none; color: var(--color-text-muted);
+  cursor: pointer; font-size: 1.1rem; padding: 4px 8px;
+}
+.item-row .remove-item:hover { color: var(--color-danger); }
+
+.empty-state {
+  text-align: center;
+  color: var(--color-text-muted);
+  padding: 40px 20px;
+}
+
+.msg { font-size: 0.9rem; margin-top: 8px; }
+.msg.error { color: var(--color-danger); }
+.msg.success { color: var(--color-primary-dark); }
+
+/* ===== 病人查詢卡片(衛教卡)專屬 ===== */
+.hero-portal {
+  text-align: center;
+  padding: 40px 20px 20px;
+}
+.hero-portal h1 { font-size: 1.6rem; }
+.hero-portal p { color: var(--color-text-muted); }
+
+.med-card {
+  border-radius: 14px;
+  background: var(--color-surface);
+  box-shadow: var(--shadow-md);
+  overflow: hidden;
+  border: 1px solid var(--color-border);
+}
+.med-card-head {
+  background: var(--color-primary);
+  color: #fff;
+  padding: 20px 24px;
+}
+.med-card-head .label { font-size: 0.8rem; opacity: 0.85; letter-spacing: 0.1em; }
+.med-card-head .patient-name { font-family: var(--font-display); font-size: 1.4rem; margin-top: 4px; }
+.med-card-head .date { font-size: 0.85rem; opacity: 0.85; margin-top: 6px; }
+
+.med-item {
+  position: relative;
+  padding: 20px 24px 34px;
+  border-bottom: 1px solid var(--color-border);
+}
+.med-item .item-date {
+  position: absolute;
+  right: 24px;
+  bottom: 12px;
+  font-size: 0.78rem;
+  color: var(--color-text-muted);
+}
+.med-item:last-child { border-bottom: none; }
+.med-item .symptom {
+  display: inline-block;
+  font-weight: 700;
+  color: var(--color-primary-dark);
+  font-size: 1.1rem;
+  margin-bottom: 8px;
+}
+.med-item .symptom::before {
+  content: "◆ ";
+  color: var(--color-accent);
+}
+.med-item .advice {
+  font-size: 1.05rem;
+  color: var(--color-text);
+  padding-left: 20px;
+  white-space: pre-wrap;
+}
+
+.login-box {
+  max-width: 380px;
+  margin: 60px auto;
+}
+
+.link-switch { text-align: center; margin-top: 24px; font-size: 0.9rem; }
+
+@media (max-width: 480px) {
+  .container { padding: 20px 14px 60px; }
+  .med-card-head .patient-name { font-size: 1.2rem; }
+}
